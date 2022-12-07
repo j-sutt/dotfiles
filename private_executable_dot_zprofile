@@ -1,0 +1,8 @@
+# executed by zsh(1) for login activation
+#===========================Note============================
+#   This script is loaded before .zshrc but after .zshenv
+#
+#   Should contain mostly commands specific to login shells
+#===========================================================
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"

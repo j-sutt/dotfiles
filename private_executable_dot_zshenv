@@ -1,0 +1,22 @@
+# executed by zsh(1) for shell activation
+# shellcheck shell=bash
+#===========================Note============================
+#   This script is loaded before all other zsh dotfiles
+#
+#   Should contain commands to set the command search path,
+#       plus other important environment variables
+#   It should NOT contain commands that produce output,
+#       nor assume the shell is attached to a tty,
+#       nor, ideally, should it contain aliases
+#       (for compatibility)
+#   Focus on env vars that need to be updated FREQUENTLY
+#===========================================================
+if [ -n "${DOTFILES_DIR}" ]; then
+  ZDOTDIR="${DOTFILES_DIR}"
+else
+  DOTFILES_DIR="/home/${USER}/.dotfiles"
+  ZDOTDIR="/home/${USER}/.dotfiles"
+fi
+VIRTUALENVWRAPPER_HOOK_DIR="${ZDOTDIR}/venvhooks"
+export DOTFILES_DIR ZDOTDIR VIRTUALENVWRAPPER_HOOK_DIR
+export OMZ_DIR_NAME="oh-my-zsh"
