@@ -1,0 +1,48 @@
+# shellcheck shell=bash
+echo "*************  Setting up virtualenvwrapper!  *************"
+# handle virtualenvwrapper stuff
+if [ ! -f "/usr/local/bin/virtualenvwrapper_lazy.sh" ]; then
+  echo "Virtualenvwrapper not found. Skipping its rc setup."
+else
+  echo "Virtualenvwrapper found. Setting up env vars..."
+  if [ -z "$WORKON_HOME" ]; then
+    export WORKON_HOME="$HOME/Venvs"
+    echo "WORKON_HOME=$WORKON_HOME"
+  fi
+  if [ -z "$PROJECT_HOME" ]; then
+    export PROJECT_HOME="$HOME/Devel"
+    echo "PROJECT_HOME=$PROJECT_HOME"
+  fi
+  if [ -n "$VIRTUALENVWRAPPER_SCRIPT" ]; then
+    echo "VIRTUALENVWRAPPER_SCRIPT=$VIRTUALENVWRAPPER_SCRIPT"
+  else
+    DEFAULT_VENVWRAPPER_SCRIPT="$(which virtualenvwrapper.sh)" \
+      || DEFAULT_VENVWRAPPER_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
+    if [ -f $DEFAULT_VENVWRAPPER_SCRIPT ]; then
+      export VIRTUALENVWRAPPER_SCRIPT=$DEFAULT_VENVWRAPPER_SCRIPT
+      echo "VIRTUALENVWRAPPER_SCRIPT=$VIRTUALENVWRAPPER_SCRIPT (default)"
+    else
+      echo "VIRTUALENVWRAPPER_SCRIPT not specified, and default not found."
+      unset DEFAULT_VENVWRAPPER_SCRIPT
+    fi
+  fi
+
+  if [ -f "$VIRTUALENVWRAPPER_SCRIPT" ]; then
+    echo "Sourcing (lazily) $VIRTUALENVWRAPPER_SCRIPT"
+    # shellcheck source=/dev/null
+    . /usr/local/bin/virtualenvwrapper_lazy.sh 2> /dev/null \
+      || echo "Failed to source /usr/local/bin/virtualenvwrapper_lazy.sh"
+  elif [ -f "$DEFAULT_VENVWRAPPER_SCRIPT" ]; then
+    echo "Sourcing $DEFAULT_VENVWRAPPER_SCRIPT"
+    # shellcheck source=/dev/null
+    . "$DEFAULT_VENVWRAPPER_SCRIPT" 2> /dev/null \
+      || echo "Failed to source $DEFAULT_VENVWRAPPER_SCRIPT"
+  else
+    echo "No virtualenvwrapper script found."
+    echo "Unsetting VIRTUALENVWRAPPER_SCRIPT..."
+    unset VIRTUALENVWRAPPER_SCRIPT
+    echo "  VIRTUALENVWRAPPER_SCRIPT=$VIRTUALENVWRAPPER_SCRIPT"
+  fi
+fi
+
+echo "*************Done setting up virtualenvwrapper*************"

@@ -11,12 +11,7 @@
 #       (for compatibility)
 #   Focus on env vars that need to be updated FREQUENTLY
 #===========================================================
-if [ -n "${DOTFILES_DIR}" ]; then
-  ZDOTDIR="${DOTFILES_DIR}"
-else
-  DOTFILES_DIR="/home/${USER}/.dotfiles"
-  ZDOTDIR="/home/${USER}/.dotfiles"
-fi
-VIRTUALENVWRAPPER_HOOK_DIR="${ZDOTDIR}/venvhooks"
-export DOTFILES_DIR ZDOTDIR VIRTUALENVWRAPPER_HOOK_DIR
-export OMZ_DIR_NAME="oh-my-zsh"
+export VIRTUALENVWRAPPER_HOOK_DIR_NAME=".hooks/virtualenvwrapper"
+export OMZ_DIR_NAME=".oh-my-zsh"
+export DOTFILES_DIR="${HOME}/dotfilesdir"
+export ZDOTDIR="${DOTFILES_DIR}"
