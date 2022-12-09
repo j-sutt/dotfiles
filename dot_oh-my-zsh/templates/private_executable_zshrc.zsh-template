@@ -51,28 +51,8 @@ fi
 
 ZSH="$(realpath "${DOTFILES_DIR}")/${OMZ_DIR_NAME:-.oh-my-zsh}"
 
-export VIRTUALENVWRAPPER_HOOK_DIR="${DOTFILES_DIR}/${VIRTUALENVWRAPPER_HOOK_DIR_NAME}"
-venvwrapper_hooksetupscript_path="${VIRTUALENVWRAPPER_HOOK_DIR}/hooksetupscript"
-if [ -f "${venvwrapper_hooksetupscript_path}" ]; then
-  echo "Virtualenvwrapper hook setup script found. Configuring..."
-  echo "----------------- configuring venvwrapper ----------------"
-  # shellcheck source=/dev/null
-  . "${venvwrapper_hooksetupscript_path}"
-elif [ -n "${VIRTUALENVWRAPPER_HOOK_DIR}" ]; then
-  echo "Virtualenvwrapper hook setup script NOT found."
-  echo "  VIRTUALENVWRAPPER_HOOK_DIR is set, but no setup script found. Diagnosing..."
-  if [ ! -d "${VIRTUALENVWRAPPER_HOOK_DIR}" ]; then
-    echo "    VIRTUALENVWRAPPER_HOOK_DIR does not exist. Creating..."
-    mkdir -pv "${VIRTUALENVWRAPPER_HOOK_DIR}"
-  else
-    echo "    VIRTUALENVWRAPPER_HOOK_DIR exists:"
-    echo "      ${VIRTUALENVWRAPPER_HOOK_DIR}"
-    #? do something because the directory exists but the script doesn't?!?
-  fi
-else
-  echo "Virtualenvwrapper hook setup script NOT found. Skipping config."
-  unset VIRTUALENVWRAPPER_HOOK_DIR
-fi
+# shellcheck source=/dev/null
+. "${DOTFILES_DIR}/.hooks/source_venvwrappersetup"
 
 if [ -f "$ZSH/oh-my-zsh.sh" ]; then
   echo "Oh-my-zsh found. Configuring..."
@@ -199,6 +179,6 @@ source "$ZSH"/oh-my-zsh.sh
 alias curlomz='sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 alias wgetomz='sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"'
 alias chezmoirepo="https://github.com/j-sutt/dotfiles.git"
-alias chezmoi
+
 
 echo "-------------------- zshrc done --------------------------"

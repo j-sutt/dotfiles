@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # executed by zsh(1) for login activation
 #===========================Note============================
 #   This script is loaded before .zshrc but after .zshenv

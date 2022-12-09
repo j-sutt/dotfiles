@@ -1,5 +1,5 @@
-# executed by zsh(1) for shell activation
 # shellcheck shell=bash
+# executed by zsh(1) for shell activation
 #===========================Note============================
 #   This script is loaded before all other zsh dotfiles
 #

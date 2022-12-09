@@ -1,5 +1,5 @@
-# executed by zsh(1) for interactive activation
 # shellcheck shell=bash
+# executed by zsh(1) for interactive activation
 #===========================Note============================
 #   This script is loaded before .zlogin but after .zprofile
 #
@@ -52,7 +52,7 @@ fi
 ZSH="$(realpath "${DOTFILES_DIR}")/${OMZ_DIR_NAME:-.oh-my-zsh}"
 
 export VIRTUALENVWRAPPER_HOOK_DIR="${DOTFILES_DIR}/${VIRTUALENVWRAPPER_HOOK_DIR_NAME}"
-venvwrapper_hooksetupscript_path="${VIRTUALENVWRAPPER_HOOK_DIR}/hooksetupscript"
+venvwrapper_hooksetupscript_path="${VIRTUALENVWRAPPER_HOOK_DIR}/script_sourced_in_zshrc"
 if [ -f "${venvwrapper_hooksetupscript_path}" ]; then
   echo "Virtualenvwrapper hook setup script found. Configuring..."
   echo "----------------- configuring venvwrapper ----------------"
