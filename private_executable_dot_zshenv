@@ -13,5 +13,5 @@
 #===========================================================
 export VIRTUALENVWRAPPER_HOOK_DIR_NAME=".hooks/virtualenvwrapper"
 export OMZ_DIR_NAME=".oh-my-zsh"
-export DOTFILES_DIR="${HOME}/dotfilesdir"
+export DOTFILES_DIR="${HOME}"
 export ZDOTDIR="${DOTFILES_DIR}"

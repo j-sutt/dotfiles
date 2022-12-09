@@ -22,7 +22,7 @@ if [[ (-d "${DOTFILES_DIR}") && (-d "${ZDOTDIR}") ]]; then
     echo "ZDOTDIR: ${ZDOTDIR}"
   else
     echo "ERROR: One or both of DOTFILES_DIR & ZDOTDIR are not set correctly!"
-    exit 1
+    return 1
   fi
 elif [[ (-d "${DOTFILES_DIR}") && ( -z "${ZDOTDIR}") ]]; then
   echo "DOTFILES_DIR is set, but ZDOTDIR is not!"
@@ -46,7 +46,7 @@ elif [[ ( -z "${DOTFILES_DIR}") && ( -z "${ZDOTDIR}") ]]; then
 else
   echo "ERROR: Something is wrong with DOTFILES_DIR and ZDOTDIR!"
   echo "DOTFILES_DIR: ${DOTFILES_DIR}" && echo "ZDOTDIR: ${ZDOTDIR}"
-  exit 1
+  return 1
 fi
 
 ZSH="$(realpath "${DOTFILES_DIR}")/${OMZ_DIR_NAME:-.oh-my-zsh}"
@@ -82,7 +82,7 @@ else
   echo "Oh-my-zsh NOT found. Skipping rest of .zshrc."
   echo "-------------------- zshrc done --------------------------"
   unset ZSH
-  exit 0
+  return 0
 fi
 #>=============================================================================
 #  Oh-my-zsh plugins
