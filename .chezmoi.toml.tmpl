@@ -1,0 +1,7 @@
+{{- $email := promptStringOnce . "email" "Enter your email: " -}}
+
+[data]
+    email = {{ $email | quote }}
+
+[onepassword]
+    prompt = true
