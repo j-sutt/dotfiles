@@ -169,7 +169,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # shellcheck disable=SC2034
-ZSH_CUSTOM=$DOTFILES_DIR/.oh-my-zsh-custom
+ZSH_CUSTOM="$(realpath "${DOTFILES_DIR}")/${OMZ_DIR_NAME:-.oh-my-zsh}-custom"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
