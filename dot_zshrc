@@ -8,9 +8,8 @@
 #===========================================================
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-
-
+# Enable shell completion for 1Password:
+eval "$(op completion zsh)"; compdef _op op
 #>==================================OhMyZsh====================================
 if [[ (-d "${DOTFILES_DIR}") && (-d "${ZDOTDIR}") ]]; then
   ZDOTDIRNAME="$(basename "${ZDOTDIR}")"
@@ -116,11 +115,17 @@ ZSH_THEME="ys"
 # shellcheck disable=SC2034
 ZSH_THEME_RANDOM_CANDIDATES=( "bira" "darkblood" "duellj" "gnzh" "strug" "ys" )
 
+# Uncomment the following line to disable auto-updates.
+# shellcheck disable=SC2034
+DISABLE_AUTO_UPDATE="true"
+
 # Uncomment the following line to use case-sensitive completion.
+# shellcheck disable=SC2034
 #CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
+# shellcheck disable=SC2034
 #HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
@@ -132,20 +137,25 @@ ZSH_THEME_RANDOM_CANDIDATES=( "bira" "darkblood" "duellj" "gnzh" "strug" "ys" )
 #zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
+# shellcheck disable=SC2034
 #DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
+# shellcheck disable=SC2034
 #DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
+# shellcheck disable=SC2034
 #DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
+# shellcheck disable=SC2034
 #ENABLE_CORRECTION="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
+# shellcheck disable=SC2034
 #DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
@@ -154,9 +164,11 @@ ZSH_THEME_RANDOM_CANDIDATES=( "bira" "darkblood" "duellj" "gnzh" "strug" "ys" )
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
+# shellcheck disable=SC2034
 #HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
+# shellcheck disable=SC2034
 #ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
@@ -198,7 +210,9 @@ source "$ZSH"/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias curlomz='sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 alias wgetomz='sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"'
-alias chezmoirepo="https://github.com/j-sutt/dotfiles.git"
-
+alias chezmoirepo='https://github.com/$GITHUB_USERNAME/dotfiles.git'
+alias getchezmoi-full='sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME'
+# to get without copying repo:
+alias getchezmoi-temp='sh -c "$(curl -fsLS get.chezmoi.io)" -- init --one-shot $GITHUB_USERNAME'
 
 echo "-------------------- zshrc done --------------------------"
