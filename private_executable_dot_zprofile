@@ -6,7 +6,7 @@
 #   Should contain mostly commands specific to login shells
 #===========================================================
 # Set PATH, MANPATH, etc., for Homebrew (macOS)
-if [[ "${OSTYPE}" =~ darwin\d{1,2}(.\d{1,2}){1,2} ]]; then
+if [[ ${OSTYPE} =~ darwin.* ]]; then
     echo "On Mac. Setting up Homebrew..."
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi

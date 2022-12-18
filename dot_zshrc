@@ -9,7 +9,9 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Enable shell completion for 1Password:
-eval "$(op completion zsh)"; compdef _op op
+if command -v op; then
+  eval "$(op completion zsh)"; compdef _op op
+fi
 #>==================================OhMyZsh====================================
 if [[ (-d "${DOTFILES_DIR}") && (-d "${ZDOTDIR}") ]]; then
   ZDOTDIRNAME="$(basename "${ZDOTDIR}")"
