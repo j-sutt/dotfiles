@@ -10,3 +10,9 @@ if [[ ${OSTYPE} =~ darwin.* ]]; then
     echo "On Mac. Setting up Homebrew..."
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+# Setup Rust:
+# shellcheck source=/dev/null
+if [ -f "$HOME/.cargo/env" ]; then
+  # shellcheck source=/dev/null
+  . "$HOME/.cargo/env"
+fi

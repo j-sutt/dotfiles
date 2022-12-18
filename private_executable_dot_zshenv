@@ -17,3 +17,10 @@ export DOTFILES_DIR="${HOME}"
 export ZDOTDIR="${DOTFILES_DIR}"
 
 export GITHUB_USERNAME="j-sutt"
+
+# Setup Rust:
+# shellcheck source=/dev/null
+if [ -f "$HOME/.cargo/env" ]; then
+  # shellcheck source=/dev/null
+  . "$HOME/.cargo/env"
+fi
