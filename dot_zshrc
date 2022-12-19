@@ -94,9 +94,9 @@ plugins_list=(
   kate 
   colored-man-pages 
   aliases
-  virtualenv
 )
 if [ -n "$VIRTUALENVWRAPPER_SCRIPT" ]; then
+  plugins_list+=(virtualenv)
   plugins_list+=(virtualenvwrapper)
 fi
 
@@ -206,15 +206,7 @@ source "$ZSH"/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias curlomz='sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 alias wgetomz='sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"'
-alias chezmoirepo='https://github.com/$GITHUB_USERNAME/dotfiles.git'
-alias getchezmoi-full='sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME'
-# to get without copying repo:
-alias getchezmoi-temp='sh -c "$(curl -fsLS get.chezmoi.io)" -- init --one-shot $GITHUB_USERNAME'
 
 echo "-------------------- zshrc done --------------------------"
