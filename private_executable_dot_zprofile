@@ -10,9 +10,13 @@ if [[ ${OSTYPE} =~ darwin.* ]]; then
     echo "On Mac. Setting up Homebrew..."
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-# Setup Rust:
-# shellcheck source=/dev/null
-if [ -f "$HOME/.cargo/env" ]; then
-  # shellcheck source=/dev/null
-  . "$HOME/.cargo/env"
+#setup onedrive env var
+if [[ ${OSTYPE} =~ darwin.* ]]; then
+    export OneDriveConsumer="$HOME/OneDrive"
+    echo "Set OneDriveConsumer=$OneDriveConsumer"
+    [[ -d "$OneDriveConsumer" ]] && echo "  OneDrive exists."
+elif [[ ${OSTYPE} =~ linux-gnu* ]]; then
+    export OneDriveConsumer="/mnt/c/Users/Jared/OneDrive"
+    echo "Set OneDriveConsumer=$OneDriveConsumer"
+    [[ -d "$OneDriveConsumer" ]] && echo "  OneDrive exists."
 fi
