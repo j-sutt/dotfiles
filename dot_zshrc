@@ -12,6 +12,16 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 if command -v op; then
   eval "$(op completion zsh)"; compdef _op op
 fi
+#setup onedrive env var
+if [[ ${OSTYPE} =~ darwin.* ]]; then
+    export OneDriveConsumer="$HOME/OneDrive"
+    echo "Set OneDriveConsumer=$OneDriveConsumer"
+    [[ -d "$OneDriveConsumer" ]] && echo "  OneDrive exists."
+elif [[ ${OSTYPE} =~ linux-gnu* ]]; then
+    export OneDriveConsumer="/mnt/c/Users/Jared/OneDrive"
+    echo "Set OneDriveConsumer=$OneDriveConsumer"
+    [[ -d "$OneDriveConsumer" ]] && echo "  OneDrive exists."
+fi
 #>==================================OhMyZsh====================================
 if [[ (-d "${DOTFILES_DIR}") && (-d "${ZDOTDIR}") ]]; then
   ZDOTDIRNAME="$(basename "${ZDOTDIR}")"
