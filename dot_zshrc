@@ -114,9 +114,9 @@ if [ -n "$VIRTUALENVWRAPPER_SCRIPT" ]; then
   plugins_list+=(virtualenvwrapper)
 fi
 
-echo -n "Plugins: "
+echo -n 'Plugins: [ '
 printf '%s ' "${plugins_list[@]}"
-
+echo ']'
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
