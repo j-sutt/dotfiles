@@ -106,7 +106,6 @@ plugins_list=(
   git 
   pip 
   themes 
-  kate 
   colored-man-pages 
   aliases
 )
@@ -115,8 +114,8 @@ if [ -n "$VIRTUALENVWRAPPER_SCRIPT" ]; then
   plugins_list+=(virtualenvwrapper)
 fi
 
-echo "Plugins:"
-printf "> %s\n" "${plugins_list[@]}"
+echo -n "Plugins: "
+printf '%s ' "${plugins_list[@]}"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
